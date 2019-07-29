@@ -1,26 +1,30 @@
 FROM registry.fedoraproject.org/fedora-minimal:30
 #FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
+ARG GOSS_VERSION="0.3.7"
 ARG PACKER_VERSION="1.4.2"
 ARG TF_VERSION="0.11.14"
 ARG VAULT_VERSION="1.1.3"
 
 RUN microdnf install -y \
     awscli \
+    ShellCheck \
     unzip \
-    wget \ 
-    && microdnf clean all
+    wget \
+ && microdnf clean all
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
 
-# Packer install
-RUN /usr/local/bin/hashicorp_software_install.sh packer ${PACKER_VERSION}
+# Packer, Terraform, Vault install
+RUN /usr/local/bin/hashicorp_software_install.sh packer ${PACKER_VERSION} \
+ && /usr/local/bin/hashicorp_software_install.sh terraform ${TF_VERSION} \
+ && /usr/local/bin/hashicorp_software_install.sh vault ${VAULT_VERSION}
 
-# Terraform install
-RUN /usr/local/bin/hashicorp_software_install.sh terraform ${TF_VERSION}
-
-# Vault install
-RUN /usr/local/bin/hashicorp_software_install.sh vault ${VAULT_VERSION}
+# Goss install
+RUN curl -L https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64 -o /usr/local/bin/goss \
+ && chmod 755 /usr/local/bin/goss \
+ && curl -L https://raw.githubusercontent.com/aelsabbahy/goss/v${GOSS_VERSION}/extras/dgoss/dgoss -o /usr/local/bin/dgoss \
+ && chmod 755 /usr/local/bin/dgoss
 
 # Packer install
 #RUN mkdir /usr/local/src/packer && \
