@@ -8,7 +8,11 @@ ARG VAULT_VERSION="1.1.3"
 
 RUN microdnf install -y \
     awscli \
+    buildah \
+    podman \
+    podman-docker \
     ShellCheck \
+    skopeo \
     unzip \
     wget \
  && microdnf clean all
