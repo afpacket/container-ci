@@ -1,0 +1,5 @@
+usr_local_bin_binaries:
+  - goss
+  - packer
+  - terraform
+  - vault

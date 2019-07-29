@@ -24,11 +24,18 @@ RUN /usr/local/bin/hashicorp_software_install.sh packer ${PACKER_VERSION} \
  && /usr/local/bin/hashicorp_software_install.sh terraform ${TF_VERSION} \
  && /usr/local/bin/hashicorp_software_install.sh vault ${VAULT_VERSION}
 
-# Goss install
+# Goss - copy gossfiles
+COPY files/goss.yml /usr/local/etc/goss.yml
+COPY files/goss-vars.yml /usr/local/etc/goss-vars.yml
+
+# Goss - install
 RUN curl -L https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64 -o /usr/local/bin/goss \
  && chmod 755 /usr/local/bin/goss \
  && curl -L https://raw.githubusercontent.com/aelsabbahy/goss/v${GOSS_VERSION}/extras/dgoss/dgoss -o /usr/local/bin/dgoss \
  && chmod 755 /usr/local/bin/dgoss
+
+# Goss - run tests
+RUN goss --gossfile /usr/local/etc/goss.yml --vars /usr/local/etc/goss-vars.yml validate
 
 # Packer install
 #RUN mkdir /usr/local/src/packer && \

@@ -1,0 +1,13 @@
+dns:
+  A:linuxfoundation.org:
+    resolvable: true
+
+file:
+{{range .Vars.usr_local_bin_binaries}}
+  /usr/local/bin/{{.}}:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: file
+{{end}}
