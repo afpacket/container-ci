@@ -24,7 +24,6 @@ RUN microdnf install -y \
     ShellCheck \
     skopeo \
     unzip \
-    wget \
  && microdnf clean all
 
 # hadolint
