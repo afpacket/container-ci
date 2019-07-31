@@ -18,6 +18,9 @@ RUN microdnf install -y \
     buildah \
     podman \
     podman-docker \
+    pipenv \
+    python3 \
+    python3-virtualenv \
     ShellCheck \
     skopeo \
     unzip \
