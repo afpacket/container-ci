@@ -27,6 +27,8 @@ RUN microdnf install -y \
     zip \
  && microdnf clean all
 
+COPY files/terraformrc /home/ci/.terraformrc
+
 # hadolint
 RUN curl -L https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint \
  && chmod 755 /usr/local/bin/hadolint
