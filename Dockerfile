@@ -3,9 +3,9 @@ FROM registry.fedoraproject.org/fedora-minimal:30
 
 ARG GOSS_VERSION="0.3.7"
 ARG HADOLINT_VERSION="1.17.1"
-ARG PACKER_VERSION="1.4.2"
-ARG TF_VERSION="0.11.14"
-ARG VAULT_VERSION="1.1.3"
+ARG PACKER_VERSION="1.4.3"
+ARG TF_VERSION="0.12.7"
+ARG VAULT_VERSION="1.2.3"
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
 
@@ -24,6 +24,7 @@ RUN microdnf install -y \
     ShellCheck \
     skopeo \
     unzip \
+    zip \
  && microdnf clean all
 
 # hadolint
