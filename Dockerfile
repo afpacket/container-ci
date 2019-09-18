@@ -18,10 +18,12 @@ COPY files/terraformrc /home/ci/.terraformrc
 RUN microdnf install -y \
     awscli \
     buildah \
+    git \
     podman \
     podman-docker \
     pipenv \
     python3 \
+    python3-pip \
     python3-virtualenv \
     ShellCheck \
     skopeo \
