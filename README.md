@@ -1,2 +1,2 @@
-# container-devops-tools
+# container-ci
 Container with DevOps tools
