@@ -16,6 +16,7 @@ RUN groupadd -r -g 998 ci \
 COPY files/terraformrc /home/ci/.terraformrc
 
 RUN microdnf install -y \
+    ansible \
     awscli \
     buildah \
     git \
