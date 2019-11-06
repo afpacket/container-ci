@@ -22,7 +22,8 @@ RUN mkdir -m 755 -p /home/ci/.ansible \
  && mkdir -m 755 -p /home/ci/.terraform.d \
  && chown ci:ci /home/ci/.ansible \
  && chown ci:ci /home/ci/.packer.d \
- && chown ci:ci /home/ci/.ssh
+ && chown ci:ci /home/ci/.ssh \
+ && chown ci:ci /home/ci/.terraform.d
 
 RUN dnf --setopt=install_weak_deps=false install -y \
     ansible \
