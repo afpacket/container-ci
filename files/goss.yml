@@ -15,8 +15,8 @@ file:
 user:
   ci:
     exists: true
-    uid: 998
-    gid: 998
+    uid: 987
+    gid: 987
     groups:
     - ci
     home: /home/ci
