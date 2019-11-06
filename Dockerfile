@@ -19,7 +19,7 @@ COPY files/terraformrc /home/ci/.terraformrc
 RUN mkdir -m 755 -p /home/ci/.ansible \
  && mkdir -m 700 -p /home/ci/.ssh \
  && mkdir -m 755 -p /home/ci/.packer.d \ 
- && mkdir -m 755 -p /home/ci/.terraform.d \
+ && mkdir -m 755 -p /home/ci/.terraform.d
 
 RUN dnf --setopt=install_weak_deps=false install -y \
     ansible \
