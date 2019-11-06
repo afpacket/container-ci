@@ -13,7 +13,13 @@ COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_insta
 RUN groupadd -r -g 998 ci \
  && useradd -r -u 998 -m -s /bin/bash -g ci ci
 
+# set up non-root user
+COPY files/ansible.cfg /home/ci/.ansible.cfg
 COPY files/terraformrc /home/ci/.terraformrc
+RUN mkdir -m 755 -p /home/ci/.ansible \
+ && mkdir -m 700 -p /home/ci/.ssh \
+ && mkdir -m 755 -p /home/ci/.packer.d \ 
+ && mkdir -m 755 -p /home/ci/.terraform.d \
 
 RUN dnf --setopt=install_weak_deps=false install -y \
     ansible \
