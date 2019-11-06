@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:30
+FROM registry.fedoraproject.org/fedora:30
 #FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 ARG GOSS_VERSION="0.3.7"
@@ -15,10 +15,11 @@ RUN groupadd -r -g 998 ci \
 
 COPY files/terraformrc /home/ci/.terraformrc
 
-RUN microdnf install -y \
+RUN dnf --setopt=install_weak_deps=false install -y \
     ansible \
     awscli \
     buildah \
+    fuse-overlayfs \
     git \
     podman \
     podman-docker \
@@ -30,7 +31,7 @@ RUN microdnf install -y \
     skopeo \
     unzip \
     zip \
- && microdnf clean all
+ && dnf clean all
 
 # hadolint
 RUN curl -L https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint \
