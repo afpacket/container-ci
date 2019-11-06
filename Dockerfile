@@ -10,8 +10,8 @@ ARG VAULT_VERSION="1.2.3"
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
 
 # create non-root user for container to run as
-RUN groupadd -r -g 998 ci \
- && useradd -r -u 998 -m -s /bin/bash -g ci ci
+RUN groupadd -r -g 987 ci \
+ && useradd -r -u 987 -m -s /bin/bash -g ci ci
 
 # set up non-root user
 COPY files/ansible.cfg /home/ci/.ansible.cfg
