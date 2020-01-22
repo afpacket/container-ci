@@ -4,8 +4,8 @@ FROM registry.fedoraproject.org/fedora:30
 ARG GOSS_VERSION="0.3.7"
 ARG HADOLINT_VERSION="1.17.1"
 ARG PACKER_VERSION="1.4.5"
-ARG TF_VERSION="0.12.13"
-ARG VAULT_VERSION="1.2.3"
+ARG TF_VERSION="0.12.19"
+ARG VAULT_VERSION="1.3.1"
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
 
