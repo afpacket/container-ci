@@ -3,7 +3,7 @@ FROM registry.fedoraproject.org/fedora:30
 
 ARG GOSS_VERSION="0.3.7"
 ARG HADOLINT_VERSION="1.17.1"
-ARG PACKER_VERSION="1.4.5"
+ARG PACKER_VERSION="1.5.5"
 ARG TF_VERSION="0.12.24"
 ARG VAULT_VERSION="1.3.4"
 
@@ -33,6 +33,8 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     pipenv \
     python3 \
     python3-pip \
+    python3-pytest \
+    python3-testinfra \
     python3-virtualenv \
     ShellCheck \
     skopeo \
