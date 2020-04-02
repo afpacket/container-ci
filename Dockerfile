@@ -8,6 +8,7 @@ ARG TF_VERSION="0.12.24"
 ARG VAULT_VERSION="1.3.4"
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
+COPY files/google-cloud-sdk.repo /etc/yum.repos.d/google-cloud-sdk.repo
 
 # create non-root user for container to run as
 RUN groupadd -r -g 987 ci \
@@ -28,6 +29,7 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     buildah \
     fuse-overlayfs \
     git \
+    kubectl \
     podman \
     podman-docker \
     pipenv \
