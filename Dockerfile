@@ -33,9 +33,7 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     kubectl \
     podman \
     podman-docker \
-    pipenv \
     python3 \
-    python3-boto3 \
     python3-dateutil \
     python3-docutils \
     python3-pip \
