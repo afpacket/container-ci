@@ -34,6 +34,7 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     podman \
     podman-docker \
     python3 \
+    python3-colorama \
     python3-dateutil \
     python3-docutils \
     python3-pip \
