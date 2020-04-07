@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:30
+FROM fedora:31
 #FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 ARG GOSS_VERSION="0.3.7"
@@ -9,6 +9,8 @@ ARG VAULT_VERSION="1.3.4"
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
 COPY files/google-cloud-sdk.repo /etc/yum.repos.d/google-cloud-sdk.repo
+COPY files/RPM-GPG-KEY-Google-Cloud /etc/pki/rpm-gpg/RPM-GPG-KEY-Google-Cloud
+COPY files/RPM-GPG-KEY-Google-Cloud-Repo /etc/pki/rpm-gpg/RPM-GPG-KEY-Google-Cloud-Repo
 
 # create non-root user for container to run as
 RUN groupadd -r -g 987 ci \
@@ -34,6 +36,7 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     pipenv \
     python3 \
     python3-pip \
+    python3-poetry \
     python3-pytest \
     python3-testinfra \
     python3-virtualenv \
