@@ -25,7 +25,6 @@ RUN mkdir -m 755 -p /home/ci/.ansible \
 
 RUN dnf --setopt=install_weak_deps=false install -y \
     ansible \
-    awscli \
     buildah \
     fuse-overlayfs \
     git \
@@ -43,6 +42,11 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     unzip \
     zip \
  && dnf clean all
+
+# awscli
+RUN pip3 install awscli --upgrade \
+ && rm -rf /usr/local/bin/__pycache__/*.pyc \
+ && rm -rf /usr/local/bin/__pycache__/*.pyo
 
 # hadolint
 RUN curl -L https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint \
