@@ -35,9 +35,14 @@ RUN dnf --setopt=install_weak_deps=false install -y \
     podman-docker \
     pipenv \
     python3 \
+    python3-boto3 \
+    python3-dateutil \
+    python3-docutils \
     python3-pip \
     python3-poetry \
+    python3-pyasn1 \
     python3-pytest \
+    python3-rsa \
     python3-testinfra \
     python3-virtualenv \
     ShellCheck \
