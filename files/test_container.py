@@ -3,6 +3,7 @@ import pytest
 @pytest.mark.parametrize('file', [
     '/usr/bin/kubectl',
     '/usr/local/bin/helm',
+    '/usr/local/bin/istioctl',
     '/usr/local/bin/packer',
     '/usr/local/bin/terraform',
     '/usr/local/bin/vault'

@@ -1,15 +1,16 @@
 FROM fedora:31
 #FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
-ARG GOSS_VERSION="0.3.7"
 ARG HADOLINT_VERSION="1.17.1"
 ARG HELM_VERSION="3.1.2"
+ARG ISTIO_VERSION="1.5.8"
 ARG PACKER_VERSION="1.5.5"
 ARG TF_VERSION="0.12.24"
 ARG VAULT_VERSION="1.3.4"
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
 COPY files/helm_install.sh /usr/local/bin/helm_install.sh
+COPY files/istioctl_install.sh /usr/local/bin/istioctl_install.sh
 COPY files/google-cloud-sdk.repo /etc/yum.repos.d/google-cloud-sdk.repo
 COPY files/RPM-GPG-KEY-Google-Cloud /etc/pki/rpm-gpg/RPM-GPG-KEY-Google-Cloud
 COPY files/RPM-GPG-KEY-Google-Cloud-Repo /etc/pki/rpm-gpg/RPM-GPG-KEY-Google-Cloud-Repo
@@ -63,6 +64,9 @@ RUN curl -L https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_V
 
 # helm 
 RUN /usr/local/bin/helm_install.sh ${HELM_VERSION}
+
+# istioctl
+RUN /usr/local/bin/istioctl_install.sh ${ISTIO_VERSION}
 
 # Packer, Terraform, Vault install
 RUN /usr/local/bin/hashicorp_software_install.sh packer ${PACKER_VERSION} \
