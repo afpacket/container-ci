@@ -54,9 +54,7 @@ RUN dnf --setopt=install_weak_deps=false install -y \
  && dnf clean all
 
 # awscli
-RUN pip3 install awscli --upgrade \
- && rm -rf /usr/local/bin/__pycache__/*.pyc \
- && rm -rf /usr/local/bin/__pycache__/*.pyo
+RUN pip3 install awscli --upgrade --no-cache-dir
 
 # hadolint
 RUN curl -L https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64 -o /usr/local/bin/hadolint \
