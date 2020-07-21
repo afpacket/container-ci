@@ -4,8 +4,8 @@ FROM fedora:31
 ARG HADOLINT_VERSION="1.17.1"
 ARG HELM_VERSION="3.1.2"
 ARG ISTIO_VERSION="1.5.8"
-ARG PACKER_VERSION="1.5.5"
-ARG TF_VERSION="0.12.24"
+ARG PACKER_VERSION="1.6.0"
+ARG TF_VERSION="0.12.28"
 ARG VAULT_VERSION="1.3.4"
 
 COPY files/hashicorp_software_install.sh /usr/local/bin/hashicorp_software_install.sh
